@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <title>A Visual Introduction To Machine Learning</title>
+
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="libraries/js/bokeh-0.12.4.min.js">
+  <link rel="stylesheet" href="libraries/js/bokeh-widgets-0.12.4.min.js">
+  <link rel="stylesheet" href="libraries/css/layout.css">
+  <link rel="stylesheet" href="libraries/css/typography.css">
+
+  <!-- JS Scripts -->
+  <script type="text/javascript" src="libraries/js/bokeh-0.12.4.min.js"></script>
+  <script type="text/javascript" src="libraries/js/bokeh-widgets-0.12.4.min.js"></script>
+  <script type="text/javascript" src="libraries/js/d3.js"></script>
+  <script type="text/javascript" src="libraries/js/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>  
+
+  <header>
+    <div id = "website-title">
+      <h2>A Visual Introduction To Machine Learning</h2>
+    </div>
+
+    <div id = "top-menu-bar">
+      <center>
+        <a href="index.html"><button>Background</button></a>
+        <a href="decision-tree.html"><button>Decision<br>Tree</button></a>
+        <a href="k-nearest-neighbors.html"><button>K Nearest<br>Neighbors</button></a>
+        <a href="k-means.html"><button>K Means</button></a>
+      </center>
+    </div>
+  </header>
+    
+    
+    <!-- Page title -->
+    <div id = "page-title">
+       <center> <u> <h1>K-Nearest Neighbors</h1> </u></center>
+    </div>
+    
+    <div id = "teaching-container">
+    
+      <!-- Teaching section 1 -->
+      <div class = "teaching-div 1">
+        
+        <div class = "text">
+                  
+        <h5>K-Nearest Neighbor (or k-NN) is somewhat self-explanatory. This algorithm simply labels data with the label of whatever known data points are closest to it.</h5>
+        <h5>For example, in the plot to the right, we have an unknown (????) flower that has sepal width = 3.8cm and sepal length = 5.8cm. What label would you give this flower? Iris setosa or Iris versicolor? K-Nearest Neighbors would call it Iris setosa because that is its <i>nearest</i> neighbor.</h5>                   
+        </div>
+
+        <div class = "viz">
+           <script>$(".teaching-div:nth-child(1) .viz").load("k-nearest-neighbors/knn_lesson1.html");</script>
+        </div>
+        
+      </div>
+  
+      <!-- Teaching section 2 -->    
+      <div class = "teaching-div 2">
+        <div class = "text">
+          
+          <h5>Generalizing this rule, we can draw decision boundaries. Any point that falls in the blue-colored area will classified as a setosa iris because the example closest to it will be a setosa, and the same holds true for the other two regions.</h5> 
+          <h5>But is this the best way to classify points? Picking only the single nearest neighbour means that our predictions will reproduce very closely the patterns found in our training data but may not generalize as well to new data. To combat this, we can consider not just the single closest point, but any number of neighbours. </h5>
+
+
+        </div>
+          <div class = "viz">
+          <script>$(".teaching-div:nth-child(2) .viz").load("k-nearest-neighbors/knn_lesson2.html");</script>
+          </div>
+      </div>
+      
+      
+      <!-- Teaching section 3 -->
+      <div class = "teaching-div 3">
+        <div class = "text">
+
+          <h5>The "k" in k-NN refers to how many neighbors should be considered. In the previous example we had a 1-NN model, meaning we only looked for the single closest neighbor when deciding what to call a new unknown flower. </h5>
+          <h5>In the plot here, we have the exact same data as before, but because this is now a 2-NN model we're looking for the two nearest neighbors and taking a vote to decide what label to choose. For example, if the two nearest neighbors are both setosa, then our new data point will be labeled setosa as well.</h5> 
+          <h5>In practice, as we increase the number of neighbors, the boundaries become smoother and less jagged. Try it yourself at the bottom of the page! </h5>
+
+
+        </div>
+        
+          <div class = "viz">
+          <script>$(".teaching-div:nth-child(3) .viz").load("k-nearest-neighbors/knn_lesson3.html");</script></div>
+        </div>
+      
+    
+      
+    </div>
+
+    <!-- Interactive controls -->
+    <div class = "interactive-controls-knn">
+      <center><H3>Try it yourself!</H3></center>
+      <center><h5>Now, looking at the full Iris dataset, use the controls below to see how the accuracy of the K-Nearest Kneighbors algorithm changes with different values of K.</h5></center>
+
+      <script type="text/javascript">
+        var boundary_plots = new Array( 
+          "k-nearest-neighbors/knn1.html",
+          "k-nearest-neighbors/knn2.html", 
+          "k-nearest-neighbors/knn3.html",
+          "k-nearest-neighbors/knn4.html",
+          "k-nearest-neighbors/knn5.html",
+          "k-nearest-neighbors/knn6.html",
+          "k-nearest-neighbors/knn7.html",
+          "k-nearest-neighbors/knn8.html",
+          "k-nearest-neighbors/knn9.html",
+          "k-nearest-neighbors/knn10.html");
+          
+        var accuracy_plots = new Array(
+          "k-nearest-neighbors/accuracy-1.html",
+          "k-nearest-neighbors/accuracy-2.html",
+          "k-nearest-neighbors/accuracy-3.html",
+          "k-nearest-neighbors/accuracy-4.html",
+          "k-nearest-neighbors/accuracy-5.html",
+          "k-nearest-neighbors/accuracy-6.html",
+          "k-nearest-neighbors/accuracy-7.html",
+          "k-nearest-neighbors/accuracy-8.html",
+          "k-nearest-neighbors/accuracy-9.html",
+          "k-nearest-neighbors/accuracy-10.html"
+          );
+          
+        var display_k = new Array(
+          "K = 1",
+          "K = 2",
+          "K = 3",
+          "K = 4",
+          "K = 5",
+          "K = 6",
+          "K = 7",
+          "K = 8",
+          "K = 9",
+          "K = 10"
+        );
+        var update_num = 0;
+        
+        function advanceone(){
+          if (update_num < boundary_plots.length - 1)
+          {
+            update_num +=1;
+          
+            $("#vcr-controls-knn :nth-child(3)").text(display_k[update_num])
+            
+            $("#model-results #decision-surface-container #decision-surface")
+                .load(boundary_plots[update_num]);
+                
+            $("#model-results #accuracy-chart-container #accuracy-chart")
+                .load(accuracy_plots[update_num]);
+          }
+          
+        }
+        
+        function decreaseone()
+        {
+          if (update_num > 0)
+          {
+            update_num -=1;
+          
+            $("#vcr-controls-knn :nth-child(3)").text(display_k[update_num])
+          
+            $("#model-results #decision-surface-container #decision-surface")
+                .load(boundary_plots[update_num]);
+        
+            $("#model-results #accuracy-chart-container #accuracy-chart")
+                .load(accuracy_plots[update_num]);
+          }
+          
+        }
+        
+      </script>
+      
+        <div id = "vcr-controls-knn">
+            <div class = "control"><button onclick = 'decreaseone()'>-</button></div>
+            <div class = "control"><button onclick = 'advanceone()'>+</button></div>
+            <div class = "control">K = 1 </div>
+        </div>
+        
+    </div>
+    
+    <div id = "model-results">
+        
+      <div id = "decision-surface-container">
+        <center><u>Decision Boundary as K-value Changes on Labeled Data</u></center>
+        <div id = "decision-surface">
+        <script>$("#model-results #decision-surface-container #decision-surface")
+        .load("k-nearest-neighbors/knn1.html");</script>
+        </div>
+        
+      </div>
+        
+      <div id="accuracy-chart-container">
+        <center><u>Accuracy On Unseen Data</u></center>
+        
+        <div id = "accuracy-chart">
+        <script>$("#model-results #accuracy-chart-container #accuracy-chart")
+                  .load("k-nearest-neighbors/accuracy-1.html");</script>
+        </div>
+        
+      </div>
+      
+    </div>
+
+  
+  <div id = "bottom-menu-bar">
+    <center>
+      <a href="index.html"><button>Background</button></a>
+      <a href="decision-tree.html"><button>Decision<br>Tree</button></a>
+      <a href="k-nearest-neighbors.html"><button>K Nearest<br>Neighbors</button></a>
+      <a href="k-means.html"><button>K Means</button></a>
+    </center>
+  </div>
+  
+  <footer>
+    <p class="white">Copyright 2017 by Sarah Kelley, Brad Putman, and David Skarbrevik.
+    <br>School of Information, University of California, Berkeley. All rights reserved.</p>
+    
+    <p class="white">Website design derived from a template created by 
+      <u><a href="http://www.fabianbentz.de">Fabian Bentz</a></u>.</p>
+  </footer>
+    
+</body>
+  
+</html>

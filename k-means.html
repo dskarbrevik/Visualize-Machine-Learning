@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<title>A Visual Introduction To Machine Learning</title>
+
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="libraries/js/bokeh-0.12.4.min.js">
+  <link rel="stylesheet" href="libraries/js/bokeh-widgets-0.12.4.min.js">
+  <link rel="stylesheet" href="libraries/css/layout.css">
+	<link rel="stylesheet" href="libraries/css/typography.css">
+
+  <!-- JS Scripts -->
+  <script type="text/javascript" src="libraries/js/bokeh-0.12.4.min.js"></script>
+  <script type="text/javascript" src="libraries/js/bokeh-widgets-0.12.4.min.js"></script>
+  <script type="text/javascript" src="libraries/js/d3.js"></script>
+	<script type="text/javascript" src="libraries/js/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>  
+
+  <header>
+    <div id = "website-title">
+      <h2>A Visual Introduction To Machine Learning</h2>
+    </div>
+
+    <div id = "top-menu-bar">
+      <center>
+        <a href="index.html"><button>Background</button></a>
+        <a href="decision-tree.html"><button>Decision<br>Tree</button></a>
+        <a href="k-nearest-neighbors.html"><button>K Nearest<br>Neighbors</button></a>
+        <a href="k-means.html"><button>K Means</button></a>
+      </center>
+    </div>
+  </header>
+    
+    
+    <!-- Page title -->
+    <div id = "page-title">
+       <center> <u> <h1>KMeans</h1> </u></center>
+	  </div>
+    
+    <div id = "teaching-container">
+    
+      <!-- Teaching section 1 -->
+      <div class = "teaching-div 1">
+        
+<div class = "text">
+          
+<h5>The KMeans algorithm is an unsupervised clustering algorithm that seeks to partition observations into a preset number of clusters. To break that down, that means that we don't need to tell the model what groups our data falls into, but instead it tries to determine the groups itself! This is useful because we may not always have labeled data.</h5>
+          
+<h5> Looking at the graph to the left, what groups would you divide the data into? It is a little hard to tell, right? But you might be able to see one slightly distinct cluster to the upper left. Hover over the point on the graph to see the actual label to which each belongs. Did that line up with how you imagined the points would be divided?</h5>
+          
+<h5></h5>
+          
+</div>
+
+        <div class = "viz">
+          <script>$(".teaching-div:nth-child(1) .viz").load("k-means/kmeans_1.html");</script>
+        </div>
+        
+      </div>
+  
+      <!-- Teaching section 2 -->    
+      <div class = "teaching-div 2">
+        <div class = "text">
+          
+          <h5>To get started with the kmeans algorithm, we first need to decide how many groups to use. In practice this can be tricky, but for now we will cheat and decide on three groups, because we know there are three types of iris. Once we have chosen the number of groups (which we call 'k'), we will chose k random points as the centers of our clusters. These are marked in black on the graph to the right. </h5>
+          
+          <h5>Then, we assign each point to belong to the group who's center is closest to it. </h5>
+
+          <h5>How does this look? </h5>
+
+          <h5>As you can see, those aren't great groupings because most of the groups have a mix of species in them. But this is just the first iteration. Next, we will recalculate the centers! </h5>
+          
+        </div>
+        <div class = "viz">
+          <script>$(".teaching-div:nth-child(2) .viz").load("k-means/kmeans_2.html");</script>
+          </div>
+      </div>
+      
+      
+      <!-- Teaching section 3 -->
+      <div class = "teaching-div 3">
+        <div class = "text">
+          <h5> In the next step, a new center is calculated by taking the mean of all the points in a given cluster. Then, points are reassigned to the new center that they are now closest too. At the bottom of the page, you can watch this process occur step by step. </h5> 
+          <h5>This process is repeated over and over until the cluster are no longer changing with each sucessive iteration. This means that the model has reached convergence. </h5>
+          <h5>On the right is the final result, once the model has reached convergence. In this case, comparing this graph to the graph above, you can see that the clusters much better match the actual clusters in the data! </h5>
+        </div>
+        
+        <div class = "viz">
+          <script>$(".teaching-div:nth-child(3) .viz").load("k-means/kmeans_3.html");</script></div>
+      </div>
+      
+    
+      
+    </div>
+
+    <!-- Interactive controls -->
+    <div class = "interactive-controls">
+      <center><H3>Try it yourself!</H3></center>
+      <center><h5>Use the controls below to see how the accuracy of the K Means Algorithm changes with each iteration.</h5></center>
+
+      <script type="text/javascript">
+        var boundary_plots = new Array( 
+          "k-means/kmeans-iterations-0.html",
+          "k-means/kmeans-iterations-1.html", 
+          "k-means/kmeans-iterations-2.html",
+          "k-means/kmeans-iterations-3.html",
+          "k-means/kmeans-iterations-4.html",
+          "k-means/kmeans-iterations-5.html",
+          "k-means/kmeans-iterations-6.html",
+          "k-means/kmeans-iterations-7.html",
+          "k-means/kmeans-iterations-8.html",
+          "k-means/kmeans-iterations-9.html");
+          
+        var accuracy_plots = new Array(
+          "k-means/accuracy-1.html",
+          "k-means/accuracy-2.html",
+          "k-means/accuracy-3.html",
+          "k-means/accuracy-4.html",
+          "k-means/accuracy-5.html",
+          "k-means/accuracy-6.html",
+          "k-means/accuracy-7.html",
+          "k-means/accuracy-8.html",
+          "k-means/accuracy-9.html",
+          "k-means/accuracy-10.html"
+          );
+          
+        var update_num = 0;
+        
+        function advanceone()
+        {
+          if (update_num < boundary_plots.length - 1)
+          {
+            update_num +=1;
+      
+            $("#model-results #decision-surface-container #decision-surface")
+                .load(boundary_plots[update_num]);
+                
+            $("#model-results #accuracy-chart-container #accuracy-chart")
+                .load(accuracy_plots[update_num]);
+          }
+        }
+        
+        function decreaseone()
+        {
+          if (update_num > 0)
+          {
+            update_num -=1;
+        
+            $("#model-results #decision-surface-container #decision-surface")
+                .load(boundary_plots[update_num]);
+        
+            $("#model-results #accuracy-chart-container #accuracy-chart")
+              .load(accuracy_plots[update_num]);
+          }
+        }
+      
+        function toend()
+        {
+          update_num = (boundary_plots.length - 1)
+          
+          $("#model-results #decision-surface-container #decision-surface")
+              .load(boundary_plots[boundary_plots.length -1]);
+          
+          $("#model-results #accuracy-chart-container #accuracy-chart")
+              .load(accuracy_plots[accuracy_plots.length -1]);
+        }
+        
+        function tostart()
+        {
+          update_num = 0
+          
+          $("#model-results #decision-surface-container #decision-surface")
+              .load(boundary_plots[0]);
+          
+          $("#model-results #accuracy-chart-container #accuracy-chart")
+              .load(accuracy_plots[0]);
+        }
+        
+      </script>
+
+      <div class = "vcr-controls">
+        <center>
+          <button onclick = 'tostart()'>|&#x25c0;</button>
+          <button onclick = 'decreaseone()'>&#x25c0;</button>
+          <button onclick = 'advanceone()'>&#9654;</button>
+          <button onclick = 'toend()'>&#9654;|</button>
+        </center>
+      </div>
+    </div>
+    
+    <div id = "model-results">
+        
+      <div id = "decision-surface-container">
+        <center><u>Existing Clusters</u></center>
+        <div id = "decision-surface">
+        <script>$("#model-results #decision-surface-container #decision-surface")
+        .load(boundary_plots[0]);</script>
+        </div>
+        
+      </div>
+        
+      <div id="accuracy-chart-container">
+        <center><u>Accuracy Chart</u></center>
+        
+        <div id = "accuracy-chart">
+        <script>$("#model-results #accuracy-chart-container #accuracy-chart")
+                  .load(accuracy_plots[0]);</script>
+        </div>
+        
+      </div>
+      
+    </div>
+
+
+  <div id = "bottom-menu-bar">
+    <center>
+      <a href="index.html"><button>Background</button></a>
+      <a href="decision-tree.html"><button>Decision<br>Tree</button></a>
+      <a href="k-nearest-neighbors.html"><button>K Nearest<br>Neighbors</button></a>
+      <a href="k-means.html"><button>K Means</button></a>
+    </center>
+  </div>
+    
+  <footer>
+    <p class="white">Copyright 2017 by Sarah Kelley, Brad Putman, and David Skarbrevik.
+    <br>School of Information, University of California, Berkeley. All rights reserved.</p>
+    
+    <p class="white">Website design derived from a template created by 
+      <u><a href="http://www.fabianbentz.de">Fabian Bentz</a></u>.</p>
+  </footer>
+    
+</body>
+	
+</html>

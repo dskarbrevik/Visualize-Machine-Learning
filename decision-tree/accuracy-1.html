@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Bokeh Plot</title>
+        
+<link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.css" type="text/css" />
+        
+<script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.js"></script>
+<script type="text/javascript">
+    Bokeh.set_log_level("info");
+</script>
+        <style>
+          html {
+            width: 100%;
+            height: 100%;
+          }
+          body {
+            width: 90%;
+            height: 100%;
+            margin: auto;
+          }
+        </style>
+    </head>
+    <body>
+        
+        <div class="bk-root">
+            <div class="bk-plotdiv" id="acfdb3be-cf79-4add-8697-35a5b6d2efcd"></div>
+        </div>
+        
+        <script type="text/javascript">
+            (function() {
+          var fn = function() {
+            Bokeh.safely(function() {
+              var docs_json = {"9984e946-8556-4746-a66a-f0de42238ac4":{"roots":{"references":[{"attributes":{"fill_color":{"value":"#1f77b4"},"line_color":{"value":"#1f77b4"},"x":{"field":"x"},"y":{"field":"y"}},"id":"457fd830-5ea7-419a-9141-743b8c560878","type":"Circle"},{"attributes":{},"id":"dac43508-9ec9-49e7-b859-e61dd64871ee","type":"ToolEvents"},{"attributes":{"callback":null,"column_names":["y","x","y","x"],"data":{"x":[1],"y":[0.6266666666666667]}},"id":"5add45dc-17d9-44f2-8db7-ef0ebdba061a","type":"ColumnDataSource"},{"attributes":{"callback":null,"plot":{"id":"c15cb23c-a361-41ca-bfed-60a3339e22e0","subtype":"Figure","type":"Plot"},"tooltips":[["Tree Depth","$x{0}"],["Accuracy","$y{0.00}"]]},"id":"b33b349a-16ea-45bf-81c9-6d70da2d40b4","type":"HoverTool"},{"attributes":{"below":[{"id":"dc1b571b-572e-4b50-908a-c5a8b57a877e","type":"LinearAxis"}],"left":[{"id":"93a82e0a-8030-4df3-95db-f66f1113d410","type":"LinearAxis"}],"plot_height":500,"plot_width":500,"renderers":[{"id":"dc1b571b-572e-4b50-908a-c5a8b57a877e","type":"LinearAxis"},{"id":"52758099-9731-4c91-b21a-60029c984908","type":"Grid"},{"id":"93a82e0a-8030-4df3-95db-f66f1113d410","type":"LinearAxis"},{"id":"ed289a70-27a5-4bc9-82ab-feec186e0e6e","type":"Grid"},{"id":"f07019ea-add2-4989-bc5a-8363a9abc93d","type":"GlyphRenderer"}],"title":{"id":"f930f3be-7902-4660-8394-e1d6e8e50fc0","type":"Title"},"tool_events":{"id":"dac43508-9ec9-49e7-b859-e61dd64871ee","type":"ToolEvents"},"toolbar":{"id":"2210764b-27ab-4849-897d-84d7f46970bf","type":"Toolbar"},"x_range":{"id":"e791cc82-99a3-4a24-85b9-305fa6444b77","type":"Range1d"},"y_range":{"id":"acb2ed9f-ad28-42e6-b11b-8f09c4ef8de5","type":"Range1d"}},"id":"c15cb23c-a361-41ca-bfed-60a3339e22e0","subtype":"Figure","type":"Plot"},{"attributes":{"plot":{"id":"c15cb23c-a361-41ca-bfed-60a3339e22e0","subtype":"Figure","type":"Plot"},"ticker":{"id":"df831daa-c0db-4c91-aba0-19d56c2a96f3","type":"BasicTicker"}},"id":"52758099-9731-4c91-b21a-60029c984908","type":"Grid"},{"attributes":{},"id":"df831daa-c0db-4c91-aba0-19d56c2a96f3","type":"BasicTicker"},{"attributes":{"bounds":[-0.04,1.04],"callback":null,"end":1.04,"start":-0.04},"id":"acb2ed9f-ad28-42e6-b11b-8f09c4ef8de5","type":"Range1d"},{"attributes":{"axis_label":"Accuracy","formatter":{"id":"ac87e585-88cb-4322-bd4b-451a1462a51a","type":"BasicTickFormatter"},"plot":{"id":"c15cb23c-a361-41ca-bfed-60a3339e22e0","subtype":"Figure","type":"Plot"},"ticker":{"id":"9f9916d7-2387-467e-9492-3e5b3bd276de","type":"BasicTicker"}},"id":"93a82e0a-8030-4df3-95db-f66f1113d410","type":"LinearAxis"},{"attributes":{"ticks":[1,2,3,4,5,6,7,8,9,10,11,12]},"id":"4b061cdd-590b-4a5a-bc50-5aa1f2ec9c12","type":"FixedTicker"},{"attributes":{"plot":null,"text":""},"id":"f930f3be-7902-4660-8394-e1d6e8e50fc0","type":"Title"},{"attributes":{"bounds":[0,13],"callback":null,"end":13},"id":"e791cc82-99a3-4a24-85b9-305fa6444b77","type":"Range1d"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"x":{"field":"x"},"y":{"field":"y"}},"id":"edf7083a-2305-4c48-b1a7-10fd660f3843","type":"Circle"},{"attributes":{"dimension":1,"plot":{"id":"c15cb23c-a361-41ca-bfed-60a3339e22e0","subtype":"Figure","type":"Plot"},"ticker":{"id":"9f9916d7-2387-467e-9492-3e5b3bd276de","type":"BasicTicker"}},"id":"ed289a70-27a5-4bc9-82ab-feec186e0e6e","type":"Grid"},{"attributes":{"active_drag":"auto","active_scroll":"auto","active_tap":"auto","tools":[{"id":"b33b349a-16ea-45bf-81c9-6d70da2d40b4","type":"HoverTool"}]},"id":"2210764b-27ab-4849-897d-84d7f46970bf","type":"Toolbar"},{"attributes":{},"id":"b8eb979e-dc6e-49e2-b4b9-346f9741b650","type":"BasicTickFormatter"},{"attributes":{},"id":"ac87e585-88cb-4322-bd4b-451a1462a51a","type":"BasicTickFormatter"},{"attributes":{},"id":"9f9916d7-2387-467e-9492-3e5b3bd276de","type":"BasicTicker"},{"attributes":{"axis_label":"Tree Depth","formatter":{"id":"b8eb979e-dc6e-49e2-b4b9-346f9741b650","type":"BasicTickFormatter"},"plot":{"id":"c15cb23c-a361-41ca-bfed-60a3339e22e0","subtype":"Figure","type":"Plot"},"ticker":{"id":"4b061cdd-590b-4a5a-bc50-5aa1f2ec9c12","type":"FixedTicker"}},"id":"dc1b571b-572e-4b50-908a-c5a8b57a877e","type":"LinearAxis"},{"attributes":{"data_source":{"id":"5add45dc-17d9-44f2-8db7-ef0ebdba061a","type":"ColumnDataSource"},"glyph":{"id":"457fd830-5ea7-419a-9141-743b8c560878","type":"Circle"},"hover_glyph":null,"nonselection_glyph":{"id":"edf7083a-2305-4c48-b1a7-10fd660f3843","type":"Circle"},"selection_glyph":null},"id":"f07019ea-add2-4989-bc5a-8363a9abc93d","type":"GlyphRenderer"}],"root_ids":["c15cb23c-a361-41ca-bfed-60a3339e22e0"]},"title":"Bokeh Application","version":"0.12.4"}};
+              var render_items = [{"docid":"9984e946-8556-4746-a66a-f0de42238ac4","elementid":"acfdb3be-cf79-4add-8697-35a5b6d2efcd","modelid":"c15cb23c-a361-41ca-bfed-60a3339e22e0"}];
+              
+              Bokeh.embed.embed_items(docs_json, render_items);
+            });
+          };
+          if (document.readyState != "loading") fn();
+          else document.addEventListener("DOMContentLoaded", fn);
+        })();
+        
+        </script>
+    </body>
+</html>
