@@ -1,4 +1,4 @@
-# Visualize Machine Learning
+# A Visual Introduction To Machine Learning
 
 A website designed to visually explain a few simple machine learning concepts.
 
